@@ -9,13 +9,33 @@ public static class Extensions
             var value = (string)builder._getter(instance);
             if (string.IsNullOrEmpty(value))
             {
-                return new ValidationError(builder._propertyName, "NotEmpty", "Name cannot be null or empty");
+                string errorMessage = $"{builder._propertyName} cannot be empty or null";
+                return new ValidationError(builder._propertyName, "NotEmpty", errorMessage);
             }
 
             return null;
         };
 
         builder._funcs.Add(func!);
+        return builder;
+    }
+
+    public static IRuleBuilder<TEntity, decimal> GreaterThan<TEntity>(this IRuleBuilder<TEntity, decimal> builder, decimal max)
+    {
+        Func<TEntity, ValidationError?> func = instance =>
+        {
+            var value = (decimal)builder._getter(instance);
+            if (value <= max)
+            {
+                string errorMessage = $"{builder._propertyName} must be greater than {max}";
+                return new ValidationError(builder._propertyName, "GreaterThan", errorMessage);
+            }
+
+            return null;
+        };
+
+        builder._funcs.Add(func!);
+
         return builder;
     }
 }
