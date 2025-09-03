@@ -4,8 +4,9 @@ namespace DotnetLibraries.FluentValidation;
 public abstract class AbstractValidator<TEntity>
     where TEntity : class
 {
-    public void RuleFor<TProperty>(Expression<Func<TEntity, TProperty>> expression)
+    public IRuleBuilder RuleFor<TProperty>(Expression<Func<TEntity, TProperty>> expression)
     {
+        return new RuleBuilder();
     }
 
     public ValidationResult Validate(TEntity obj)
