@@ -7,4 +7,10 @@ public abstract class AbstractValidator<TEntity>
     public void RuleFor<TProperty>(Expression<Func<TEntity, TProperty>> expression)
     {
     }
+
+    public ValidationResult Validate(TEntity obj)
+    {
+        var res = new ValidationResult();
+        return res;
+    }
 }
