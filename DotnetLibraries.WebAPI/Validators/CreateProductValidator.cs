@@ -1,5 +1,5 @@
-﻿using DotnetLibraries.WebAPI.Dtos;
-using FluentValidation;
+﻿using DotnetLibraries.FluentValidation;
+using DotnetLibraries.WebAPI.Dtos;
 
 namespace DotnetLibraries.WebAPI.Validators;
 
