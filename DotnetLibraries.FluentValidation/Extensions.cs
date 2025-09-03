@@ -38,4 +38,23 @@ public static class Extensions
 
         return builder;
     }
+
+    public static IRuleBuilder<TEntity, TProperty> WithMessage<TEntity, TProperty>(this IRuleBuilder<TEntity, TProperty> builder, string messsage)
+    {
+        var lastIndex = builder._funcs.Count - 1;
+        var lastRule = builder._funcs[lastIndex];
+
+        builder._funcs[lastIndex] = instance =>
+        {
+            var failure = lastRule(instance);
+            if (failure is not null)
+            {
+                return new(failure.PropertyName, failure.ErrorCode, messsage);
+            }
+
+            return null;
+        };
+
+        return builder;
+    }
 }
