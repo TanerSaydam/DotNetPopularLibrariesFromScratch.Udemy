@@ -6,7 +6,7 @@ public abstract class AbstractValidator<TEntity>
 {
     private readonly List<Func<TEntity, object>> _getters = new();
     private readonly List<Func<TEntity, ValidationError>> _funcs = new();
-    public IRuleBuilder<TEntity> RuleFor<TProperty>(Expression<Func<TEntity, TProperty>> expression)
+    public IRuleBuilder<TEntity, TProperty> RuleFor<TProperty>(Expression<Func<TEntity, TProperty>> expression)
     {
         var compile = expression.Compile();
         Func<TEntity, object> getter = x => compile(x)!;
@@ -18,7 +18,7 @@ public abstract class AbstractValidator<TEntity>
         }
         string propertyName = memberExpression.Member.Name;
 
-        return new RuleBuilder<TEntity>(propertyName, getter, _funcs);
+        return new RuleBuilder<TEntity, TProperty>(propertyName, getter, _funcs);
     }
 
     public ValidationResult Validate(TEntity obj)

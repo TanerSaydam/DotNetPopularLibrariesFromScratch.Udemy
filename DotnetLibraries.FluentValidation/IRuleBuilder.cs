@@ -1,12 +1,12 @@
 ﻿namespace DotnetLibraries.FluentValidation;
-public interface IRuleBuilder<TEntity>
+public interface IRuleBuilder<TEntity, TProperty>
 {
     string _propertyName { get; }
     Func<TEntity, object> _getter { get; }
     List<Func<TEntity, ValidationError>> _funcs { get; }
 }
 
-public sealed class RuleBuilder<TEntity> : IRuleBuilder<TEntity>
+public sealed class RuleBuilder<TEntity, TProperty> : IRuleBuilder<TEntity, TProperty>
 {
     public Func<TEntity, object> _getter { get; }
     public string _propertyName { get; }

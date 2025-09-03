@@ -2,7 +2,7 @@
 
 public static class Extensions
 {
-    public static IRuleBuilder<TEntity> NotEmpty<TEntity>(this IRuleBuilder<TEntity> builder)
+    public static IRuleBuilder<TEntity, string> NotEmpty<TEntity>(this IRuleBuilder<TEntity, string> builder)
     {
         Func<TEntity, ValidationError?> func = instance =>
         {
