@@ -1,7 +1,7 @@
-POST https://localhost:7295/api/products
+POST https://localhost:7295/products
 Content-Type:application/json
 
 {
-    "name":"Taner",
+    "name":"",
     "price": 14
 }
