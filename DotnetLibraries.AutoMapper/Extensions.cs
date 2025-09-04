@@ -7,6 +7,9 @@ public static class Extensions
         this IServiceCollection services,
         Action<AutoMapperConfiguration> configuration)
     {
+        var cfg = new AutoMapperConfiguration();
+        configuration.Invoke(cfg);
+
         services.AddScoped<IMapper, Mapper>();
     }
 }
