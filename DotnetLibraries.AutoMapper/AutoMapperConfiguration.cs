@@ -7,6 +7,16 @@ public sealed class AutoMapperConfiguration
 {
     public string LicenseKey { get; set; } = default!;
     private readonly ConcurrentDictionary<(Type Src, Type Dest), Action<object, object>> _maps = new();
+
+    public void MapTo<TSoruce, TDestination>(TSoruce srcObj, TDestination destObj)
+    {
+        if (!_maps.TryGetValue((srcObj.GetType(), destObj.GetType()), out var action))
+        {
+            throw new InvalidOperationException($"Mapping not found: {srcObj.GetType().Name} to {destObj.GetType().Name}");
+        }
+
+        action(srcObj, destObj);
+    }
     public void CreateMap<TSource, TDestination>()
     {
         var action = Build(typeof(TSource), typeof(TDestination));

@@ -9,7 +9,7 @@ public static class Extensions
     {
         var cfg = new AutoMapperConfiguration();
         configuration.Invoke(cfg);
-
+        services.AddSingleton(cfg);
         services.AddScoped<IMapper, Mapper>();
     }
 }
