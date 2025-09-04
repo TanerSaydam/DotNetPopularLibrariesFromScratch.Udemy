@@ -1,3 +1,4 @@
+using Carter;
 using DotnetLibraries.AutoMapper;
 using DotnetLibraries.EntityFrameworkCore;
 using DotnetLibraries.WebAPI.Context;
@@ -18,17 +19,15 @@ builder.Services.AddAutoMapper(cfg =>
     cfg.CreateMap<UpdateProductDto, Product>();
 });
 
+builder.Services.AddCarter();
+
 builder.Services.AddControllers();
 
 var app = builder.Build();
 
 app.MapGet("/", () => "Hello World!");
 
-app.MapGet("/products", (ApplicationDbContext dbContext) =>
-{
-    var res = dbContext.Products.ToList();
-    return res;
-});
+app.MapCarter();
 
 app.MapControllers();
 

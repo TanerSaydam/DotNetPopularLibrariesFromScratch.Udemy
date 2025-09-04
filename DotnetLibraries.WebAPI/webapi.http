@@ -1,2 +1,2 @@
-GET https://localhost:7295/products
+GET https://localhost:7295/categories
 Content-Type:application/json
