@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="15.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\DotnetLibraries.FluentValidation\DotnetLibraries.FluentValidation.csproj" />
     <ProjectReference Include="..\DotnetLibraries.Mapster\DotnetLibraries.Mapster.csproj" />
   </ItemGroup>

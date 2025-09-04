@@ -1,4 +1,5 @@
-﻿using DotnetLibraries.Mapster;
+﻿using AutoMapper;
+using DotnetLibraries.Mapster;
 using DotnetLibraries.WebAPI.Attributes;
 using DotnetLibraries.WebAPI.Dtos;
 using DotnetLibraries.WebAPI.Models;
@@ -9,12 +10,14 @@ namespace DotnetLibraries.WebAPI.Controllers;
 [ApiController]
 [Route("/api/products")]
 [Validate]
-public sealed class ProductsController : ControllerBase
+public sealed class ProductsController(
+    IMapper mapper) : ControllerBase
 {
     [HttpPost]
     public IActionResult Create(CreateProductDto request)
     {
-        var product = request.Adapt<Product>();
+        //var product = request.Adapt<Product>();
+        var product = mapper.Map<Product>(request);
         return Ok(new { Message = "Create product is successful" });
     }
 
