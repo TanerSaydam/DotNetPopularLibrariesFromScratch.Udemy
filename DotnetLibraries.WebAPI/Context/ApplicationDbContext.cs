@@ -9,5 +9,5 @@ public sealed class ApplicationDbContext : DbContext
     {
     }
 
-    public DbSet<Product> Products { get; set; }
+    public DbSet<Product> Products { get; set; } = default!;
 }

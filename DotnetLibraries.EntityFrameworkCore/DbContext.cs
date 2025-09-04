@@ -1,5 +1,4 @@
 ﻿using System.Reflection;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace DotnetLibraries.EntityFrameworkCore;
 public class DbContext
@@ -22,56 +21,8 @@ public class DbContext
                 typeof(DbSet<>).MakeGenericType(entityType),
                 this,
                 prop.Name);
+            prop.SetValue(this, instance);
         }
 
-    }
-}
-
-public sealed class DbContextOptions
-{
-    public string ConnectionString { get; set; } = default!;
-
-}
-
-public sealed class DbSet<TEntity>
-    where TEntity : class, new()
-{
-    private readonly string _connectinString;
-    private readonly string _tableName;
-    public DbSet(DbContext dbContext, string tableName)
-    {
-        _connectinString = dbContext.Options.ConnectionString;
-        _tableName = tableName;
-    }
-    public List<TEntity> ToList()
-    {
-
-        return new();
-    }
-}
-
-public static class Extensions
-{
-    public static void AddDbContext<TContext>(
-        this IServiceCollection services,
-        Action<DbContextOpitonsBuilder> action)
-        where TContext : DbContext
-    {
-        services.AddScoped(sp =>
-        {
-            var dbContextBuilder = new DbContextOpitonsBuilder();
-            action(dbContextBuilder);
-            var options = dbContextBuilder.Options;
-            return (TContext)Activator.CreateInstance(typeof(TContext), options)!;
-        });
-    }
-}
-
-public sealed class DbContextOpitonsBuilder
-{
-    public DbContextOptions Options { get; set; } = new();
-    public void UseSqlServer(string connectionString)
-    {
-        Options.ConnectionString = connectionString;
     }
 }
