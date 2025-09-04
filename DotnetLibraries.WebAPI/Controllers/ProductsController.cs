@@ -1,4 +1,4 @@
-﻿using AutoMapper;
+﻿using DotnetLibraries.AutoMapper;
 using DotnetLibraries.Mapster;
 using DotnetLibraries.WebAPI.Attributes;
 using DotnetLibraries.WebAPI.Dtos;

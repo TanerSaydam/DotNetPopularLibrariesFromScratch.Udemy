@@ -7,6 +7,6 @@ public static class Extensions
         this IServiceCollection services,
         Action<AutoMapperConfiguration> configuration)
     {
-
+        services.AddScoped<IMapper, Mapper>();
     }
 }
