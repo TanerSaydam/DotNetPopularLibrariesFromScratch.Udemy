@@ -8,7 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddAutoMapper(cfg =>
 {
     cfg.LicenseKey = "";
-    //cfg.CreateMap<CreateProductDto, Product>();
+    cfg.CreateMap<CreateProductDto, Product>();
     cfg.CreateMap<UpdateProductDto, Product>();
 });
 
