@@ -1,4 +1,4 @@
-﻿using Carter;
+﻿using DotnetLibraries.Carter;
 using DotnetLibraries.WebAPI.Context;
 
 namespace DotnetLibraries.WebAPI.Modules;

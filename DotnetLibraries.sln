@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotnetLibraries.AutoMapper"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotnetLibraries.EntityFrameworkCore", "DotnetLibraries.EntityFrameworkCore\DotnetLibraries.EntityFrameworkCore.csproj", "{0C5F6216-CF00-45D9-A5AE-E2E03D284293}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotnetLibraries.Carter", "DotnetLibraries.Carter\DotnetLibraries.Carter.csproj", "{8E6387FB-EA55-4110-BA37-44921097F213}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{0C5F6216-CF00-45D9-A5AE-E2E03D284293}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0C5F6216-CF00-45D9-A5AE-E2E03D284293}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0C5F6216-CF00-45D9-A5AE-E2E03D284293}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E6387FB-EA55-4110-BA37-44921097F213}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E6387FB-EA55-4110-BA37-44921097F213}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E6387FB-EA55-4110-BA37-44921097F213}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E6387FB-EA55-4110-BA37-44921097F213}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

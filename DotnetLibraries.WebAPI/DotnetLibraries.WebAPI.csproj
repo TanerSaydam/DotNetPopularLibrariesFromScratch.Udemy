@@ -7,11 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Carter" Version="9.0.0" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\DotnetLibraries.AutoMapper\DotnetLibraries.AutoMapper.csproj" />
+    <ProjectReference Include="..\DotnetLibraries.Carter\DotnetLibraries.Carter.csproj" />
     <ProjectReference Include="..\DotnetLibraries.EntityFrameworkCore\DotnetLibraries.EntityFrameworkCore.csproj" />
     <ProjectReference Include="..\DotnetLibraries.FluentValidation\DotnetLibraries.FluentValidation.csproj" />
     <ProjectReference Include="..\DotnetLibraries.Mapster\DotnetLibraries.Mapster.csproj" />
