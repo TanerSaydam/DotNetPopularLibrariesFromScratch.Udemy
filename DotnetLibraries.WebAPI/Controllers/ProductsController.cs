@@ -1,5 +1,4 @@
 ﻿using DotnetLibraries.AutoMapper;
-using DotnetLibraries.Mapster;
 using DotnetLibraries.WebAPI.Attributes;
 using DotnetLibraries.WebAPI.Dtos;
 using DotnetLibraries.WebAPI.Models;
@@ -26,7 +25,8 @@ public sealed class ProductsController(
     {
         var product = new Product();
 
-        request.Adapt(product);
+        //request.Adapt(product);
+        mapper.Map(request, product);
 
         return Ok(new { Message = "Create product is successful" });
     }
