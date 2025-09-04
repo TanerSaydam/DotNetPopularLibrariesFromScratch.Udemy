@@ -3,16 +3,14 @@
 namespace DotnetLibraries.Mapster;
 public static class Extensions
 {
-    public static TEntity Adapt<TEntity>(this object src)
-        where TEntity : class, new()
+    private static TEntity MapTo<TEntity>(object src, TEntity instance) where TEntity : class, new()
     {
-        var instance = new TEntity();
-
         var srcProperties = src.GetType().GetProperties(
-            BindingFlags.Public | BindingFlags.Instance);
+                    BindingFlags.Public | BindingFlags.Instance);
         var destProperties = instance.GetType().GetProperties(
             BindingFlags.Public | BindingFlags.Instance)
-            .Where(p => p.CanWrite);
+            .Where(p => p.CanWrite)
+            .ToList();
 
         foreach (var srcProperty in srcProperties)
         {
@@ -24,5 +22,18 @@ public static class Extensions
         }
 
         return instance;
+    }
+    public static TEntity Adapt<TEntity>(this object src)
+        where TEntity : class, new()
+    {
+        var instance = new TEntity();
+        return MapTo(src, instance);
+    }
+
+    public static TEntity Adapt<TEntity>(this object src, TEntity dest)
+        where TEntity : class, new()
+    {
+
+        return MapTo(src, dest);
     }
 }

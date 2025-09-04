@@ -23,7 +23,7 @@ public sealed class ProductsController : ControllerBase
     {
         var product = new Product();
 
-        //request.Adapt(product);
+        request.Adapt(product);
 
         return Ok(new { Message = "Create product is successful" });
     }
