@@ -1,7 +1,16 @@
-POST https://localhost:7295/products
+POST https://localhost:7295/api/products
 Content-Type:application/json
 
 {
-    "name":"",
-    "price": 14
+    "name":"Domates",
+    "price": 14,
+    "description":"Bla bla"
+}
+
+###
+PUT https://localhost:7295/api/products
+Content-Type:application/json
+
+{
+    "name":"Salatalýk"
 }
