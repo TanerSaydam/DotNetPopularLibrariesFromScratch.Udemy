@@ -1,3 +1,4 @@
+using DotnetLibraries.AutoMapper;
 using DotnetLibraries.WebAPI.Attributes;
 using DotnetLibraries.WebAPI.Dtos;
 using DotnetLibraries.WebAPI.Models;
