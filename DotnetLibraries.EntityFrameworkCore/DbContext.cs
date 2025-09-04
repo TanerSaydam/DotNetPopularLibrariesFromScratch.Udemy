@@ -11,6 +11,7 @@ public class DbContext
 
 public sealed class DbContextOptions
 {
+    public string ConnectionString { get; set; } = default!;
 
 }
 
@@ -19,6 +20,7 @@ public sealed class DbSet<TEntity>
 {
     public List<TEntity> ToList()
     {
+
         return new();
     }
 }
@@ -30,14 +32,21 @@ public static class Extensions
         Action<DbContextOpitonsBuilder> action)
         where TContext : DbContext
     {
-
+        services.AddScoped(sp =>
+        {
+            var dbContextBuilder = new DbContextOpitonsBuilder();
+            action(dbContextBuilder);
+            var options = dbContextBuilder.Options;
+            return (TContext)Activator.CreateInstance(typeof(TContext), options)!;
+        });
     }
 }
 
 public sealed class DbContextOpitonsBuilder
 {
+    public DbContextOptions Options { get; set; } = new();
     public void UseSqlServer(string connectionString)
     {
-
+        Options.ConnectionString = connectionString;
     }
 }
