@@ -1,5 +1,6 @@
 ﻿using DotnetLibraries.Carter;
 using DotnetLibraries.WebAPI.Context;
+using DotnetLibraries.WebAPI.Models;
 
 namespace DotnetLibraries.WebAPI.Modules;
 
@@ -9,10 +10,23 @@ public class ProductModule : ICarterModule
     {
         var app = builder.MapGroup("products");
 
-        app.MapGet(string.Empty, (ApplicationDbContext dbContext) =>
+        app.MapGet(string.Empty, (IProductService productService) =>
         {
-            var res = dbContext.Products.ToList();
+            var res = productService.GetAll();
             return res;
         });
+    }
+}
+
+public interface IProductService
+{
+    List<Product> GetAll();
+}
+
+public sealed class ProductService(ApplicationDbContext dbContext) : IProductService
+{
+    public List<Product> GetAll()
+    {
+        return dbContext.Products.ToList();
     }
 }

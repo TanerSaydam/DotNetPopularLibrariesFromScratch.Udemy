@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Scrutor" Version="6.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\DotnetLibraries.AutoMapper\DotnetLibraries.AutoMapper.csproj" />
     <ProjectReference Include="..\DotnetLibraries.Carter\DotnetLibraries.Carter.csproj" />
     <ProjectReference Include="..\DotnetLibraries.EntityFrameworkCore\DotnetLibraries.EntityFrameworkCore.csproj" />
