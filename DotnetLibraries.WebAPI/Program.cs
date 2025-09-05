@@ -23,12 +23,12 @@ builder.Services.AddAutoMapper(cfg =>
 builder.Services.AddCarter();
 builder.Services.AddControllers();
 
-builder.Services.Scan(action => action //ITypeSourceSelector
-.FromAssemblies(Assembly.GetExecutingAssembly()) //IImplementationTypeSelector IAssemblySelector
-.AddClasses(publicOnly: false) //IServiceTypeSelector IImplementationTypeSelector
-.UsingRegistrationStrategy(RegistrationStrategy.Skip) //IServiceTypeSelector IServiceTypeSelector
-.AsMatchingInterface() //ILifeTimeSelector IServiceTypeSelector
-.WithScopedLifetime()); //IImplementationTypeSelector ILifeTimeSelector
+builder.Services.Scan(action => action
+.FromAssemblies(Assembly.GetExecutingAssembly())
+.AddClasses(publicOnly: false)
+.UsingRegistrationStrategy(RegistrationStrategy.Skip)
+.AsMatchingInterface()
+.WithScopedLifetime());
 
 var app = builder.Build();
 
